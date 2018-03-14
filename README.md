@@ -4,12 +4,14 @@ Auteurs : Henriot Alexandre, Pelletier Vincent
 
 
 Q1) Création de la classe DnD contenant les 4 attributs
+
     this.xStart = 0;
     this.yStart = 0;
     this.xEnd = 0;
     this.yEnd = 0;
 
 Q2) Déclaration des 3 fonctions correspondantes aux 3 actions à gérer (pression, déplacement, relachement)
+
     this.mousePressed = function(evt){
         pressed = true;
         this.xStart=getMousePosition(canvas, evt).x;
