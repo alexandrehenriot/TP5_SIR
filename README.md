@@ -10,7 +10,7 @@ Q1) Création de la classe DnD contenant les 4 attributs
     this.yEnd = 0;
 
 Q2) Déclaration des 3 fonctions correspondantes aux 3 actions à gérer (pression, déplacement, relachement)
-this.mousePressed = function(evt){
+    this.mousePressed = function(evt){
         pressed = true;
         this.xStart=getMousePosition(canvas, evt).x;
         this.yStart=getMousePosition(canvas, evt).y;
@@ -20,7 +20,7 @@ this.mousePressed = function(evt){
         console.log("Press");
         console.log(this.xStart);
         console.log(this.yStart);
-}.bind(this);
+    }.bind(this);
 
 etc...
 
