@@ -16,6 +16,7 @@ var rec = new Rectangle(10, 20, 50, 100, 5, '#00CCC0');
 rec.paint(ctx);
 var ligne = new Line(10, 20, 50, 100, 5, '#00CCC0');
 ligne.paint(ctx);
+
 // tester également Dessin.
 var drawing = new Drawing();
 drawing.addShape(rec);
