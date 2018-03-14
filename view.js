@@ -10,7 +10,7 @@ Shape.prototype.paint = function(ctx){
 Rectangle.prototype.paint = function(ctx) {
 //TODO Manager color
     Shape.prototype.paint.call(this, ctx);
-    ctx.rect(this.getXstart(), this.getYstart(), this.getXend(), this.getYend());
+    ctx.rect(this.x, this.y, this.width, this.height);
     ctx.stroke();
 };
 
@@ -18,8 +18,8 @@ Line.prototype.paint = function(ctx) {
 //TODO Manager color
     ctx.beginPath();
     Shape.prototype.paint.call(this, ctx);
-    ctx.moveTo(this.getXstart(), this.getYstart());
-    ctx.lineTo(this.getXend(), this.getYend());
+    ctx.moveTo(this.xStart, this.yStart);
+    ctx.lineTo(this.xEnd, this.yEnd);
     ctx.stroke();
 };
 
@@ -32,4 +32,8 @@ Drawing.prototype.paint = function(ctx) {
         // now fill the canvas
         eltDuTableau.paint(ctx);
     });
+};
+
+Drawing.prototype.majShapeList = function(form){
+    var ListShape = document.getElementById('shapeList');
 };

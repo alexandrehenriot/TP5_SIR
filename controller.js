@@ -35,13 +35,13 @@ function Pencil(ctx, drawing, canvas) {
 
         // le cas ou c'est la ligne
         case editingMode.line:{
-            this.currentShape = new Line(DnD.getXstart(),DnD.getYstart(),DnD.getXend(),DnD.getYend(),this.currLineWidth,this.currColour);
+            this.currentShape = new Line(DnD.xStart,DnD.yStart,DnD.xEnd,DnD.yEnd,this.currLineWidth,this.currColour);
             break;
         }
 
         // le cas ou c'est le rectangle
         case editingMode.rect:{
-            this.currentShape = new Rectangle(DnD.getXstart(),DnD.getYstart(),DnD.height,DnD.width,this.currLineWidth,this.currColour);
+            this.currentShape = new Rectangle(DnD.xStart,DnD.yStart,DnD.xEnd-DnD.xStart,DnD.yEnd-DnD.yStart,this.currLineWidth,this.currColour);
             break;
         }
         }
@@ -50,9 +50,9 @@ function Pencil(ctx, drawing, canvas) {
 
     this.onInteractionUpdate = function(DnD){
         if (butLine.checked) {
-            this.currentShape = new Line(DnD.getXstart(),DnD.getYstart(),DnD.getXend(),DnD.getYend(),this.currLineWidth,this.currColour);
+            this.currentShape = new Line(DnD.xStart,DnD.yStart,DnD.xEnd,DnD.yEnd,this.currLineWidth,this.currColour);
         } else if(butRect.checked){
-            this.currentShape = new Rectangle(DnD.getXstart(),DnD.getYstart(),DnD.height,DnD.width,this.currLineWidth,this.currColour);
+            this.currentShape = new Rectangle(DnD.xStart,DnD.yStart,DnD.xEnd-DnD.xStart,DnD.yEnd-DnD.yStart,this.currLineWidth,this.currColour);
         }
 
         // reinitialisation du canvas
@@ -63,7 +63,22 @@ function Pencil(ctx, drawing, canvas) {
     }.bind(this);
 
     this.onInteractionEnd = function(DnD){
+        if (butLine.checked) {
+            this.currentShape = new Line(DnD.xStart,DnD.yStart,DnD.xEnd,DnD.yEnd,this.currLineWidth,this.currColour);
+        } else if(butRect.checked){
+            this.currentShape = new Rectangle(DnD.xStart,DnD.yStart,DnD.xEnd-DnD.xStart,DnD.yEnd-DnD.yStart,this.currLineWidth,this.currColour);
+        }
 
+        // reinitialisation du canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // on ajoute une forme au canvas
+        drawing.addShape(this.currentShape);
+        // creation de la liste de dessins du canvas
+        drawing.paint(ctx, canvas);
+        // maj de la liste des formes
+        drawing.updateShapeList(this.currentShape);
+        // plus aucune forme ne doit etre selectionnee
+        this.currentShape=null;
     }
 };
 
