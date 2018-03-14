@@ -27,16 +27,18 @@ Q2) Déclaration des 3 fonctions correspondantes aux 3 actions à gérer (pressi
 etc...
 
 Q3) Liaison des fonctions aux évènements
-canvas.addEventListener('mousedown', this.mousePressed, false);
-canvas.addEventListener('mousemove', this.mouseMove, false);
-canvas.addEventListener('mouseup', this.mouseRelease, false);
+
+    canvas.addEventListener('mousedown', this.mousePressed, false);
+    canvas.addEventListener('mousemove', this.mouseMove, false);
+    canvas.addEventListener('mouseup', this.mouseRelease, false);
 
 Q4) Enregistrement de chaque fonction auprès du canvas
 
-Q5)
-console.log("Press");
-console.log(this.xStart);
-console.log(this.yStart);
+Q5) Affichage console
+
+    console.log("Press");
+    console.log(this.xStart);
+    console.log(this.yStart);
 
 Q6) Implémentation des 4 classes dans model.js
 -Drawing
@@ -49,9 +51,10 @@ Q7) Fonctions d'affichage
 Q8) Test code
 
 Q9) Interaction DnD à Pencil
-interactor.onInteractionStart(this);
-interactor.onInteractionUpdate(this);
-interactor.onInteractionEnd(this);
+
+    interactor.onInteractionStart(this);
+    interactor.onInteractionUpdate(this);
+    interactor.onInteractionEnd(this);
 
 Q10) Implémentation des fonctions dans Pencil
 
